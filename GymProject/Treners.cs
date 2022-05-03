@@ -8,14 +8,18 @@ namespace GymProject
 {
     class Treners : Users
     {
-        public List<string> Subjects;
+        public string Subjects;
         public List<Clients> Clients;
+        string login { get; set; }
+        string pasword { get; set; }
         public Treners(int id, Gender gender, string login, string pasword, string name, 
-            string surname, string midname, List<string> subjects, List<Clients> clients) : 
-            base(id, gender, login, pasword, name, surname, midname)
+           string subjects, List<Clients> clients) : 
+            base(id, gender, name)
         {
             Subjects = subjects;
             Clients = clients;
+            this.login = login;
+            this.pasword = pasword;
         }
     }
 }

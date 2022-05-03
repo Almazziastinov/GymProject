@@ -14,21 +14,15 @@ namespace GymProject
     {
         int id { get; set; }
         Gender gender { get; set; }
-        string login { get; set; }
-        string pasword { get; set; }
         string name { get; set; }
-        string surname { get; set; }
-        string midname { get; set; }
+        
 
-        public Users(int id, Gender gender, string login, string pasword, string name, string surname, string midname)
+        public Users(int id, Gender gender, string name)
         {
             this.id = id;
             this.gender = gender;
-            this.login = login;
-            this.pasword = pasword;
             this.name = name;
-            this.surname = surname;
-            this.midname = midname;
+            
         }
 
 

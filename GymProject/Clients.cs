@@ -10,9 +10,9 @@ namespace GymProject
     {
         public List<string> Rates;
         public List<Treners> Treners;
-        public Clients(int id, Gender gender, string login, string pasword, string name,
-            string surname, string midname, List<string> rates, List<Treners> treners) :
-            base(id, gender, login, pasword, name, surname, midname)
+        public Clients(int id, Gender gender, string name,
+             List<string> rates, List<Treners> treners) :
+            base(id, gender, name)
         {
             Rates = rates;
             Treners = treners;
