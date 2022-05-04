@@ -14,17 +14,13 @@ namespace GymProject
 {
     public partial class MainForm : Form
     {
-        private SQLiteConnection UserDb;
+        private SQLiteConnection UserDb = new SQLiteConnection("Data Source=UsersDb.db; Version=3");
         public MainForm()
         {
             InitializeComponent();
-
-            label2.Text = "";
-
-            
-
-           
+            label2.Text = "";  
         }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             TrenersToCB();
@@ -45,32 +41,97 @@ namespace GymProject
                 trenersComboBox1.Items.Add(reader["ID"] +" "+ reader["Name"] +" "+ reader["Subjects"]);
                 trenersComboBox2.Items.Add(reader["ID"] + " " + reader["Name"] +" "+ reader["Subjects"]);
             }
-            
             UserDb.Close();
-
-           
         }
 
-
+        
 
         public void LoockerToCB()
         {
-            UserDb = new SQLiteConnection("Data Source=UsersDb.db; Version=3");
+            
             UserDb.Open();
-            string query = $"select MaleLockkedLoockers, MaleOpenLoockeers, FeMaleLockkedLoockers, FeMaleOpenLoockers from Hals";
+            string query = $"select * from Hals";
             SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
             SQLiteDataReader reader = cmd.ExecuteReader();
-
+            
             while (reader.Read())
             {
-                MaleLockedcomboBox3.Items.Add(reader["MaleLockkedLoockers"]);
-                MaleOpencomboBox1.Items.Add(reader["MaleOpenLoockeers"]);
-                FeMaleLockedcomboBox4.Items.Add(reader["FeMaleLockkedLoockers"]);
-                feMaleOpencomboBox2.Items.Add(reader["FeMaleOpenLoockers"]);
+                if (reader["MaleOpenLoockeers"].ToString().Equals("") 
+                    & reader["MaleLockkedLoockers"].ToString().Equals("") 
+                    & reader["FeMaleLockkedLoockers"].ToString().Equals(""))
+                {
+                    feMaleOpencomboBox2.Items.Add(reader["FeMaleOpenLoockers"]);
+                }
+                else if (reader["FeMaleOpenLoockers"].ToString().Equals("")
+                    & reader["MaleLockkedLoockers"].ToString().Equals("")
+                    & reader["FeMaleLockkedLoockers"].ToString().Equals(""))
+                {
+                    MaleOpencomboBox1.Items.Add(reader["MaleOpenLoockeers"]);
+                }
+                else if (reader["FeMaleOpenLoockers"].ToString().Equals("")
+                    & reader["MaleLockkedLoockers"].ToString().Equals("")
+                    & reader["MaleOpenLoockeers"].ToString().Equals(""))
+                {
+                    FeMaleLockedcomboBox4.Items.Add(reader["FeMaleLockkedLoockers"]);
+                }
+                else if (reader["FeMaleOpenLoockers"].ToString().Equals("")
+                    & reader["FeMaleLockkedLoockers"].ToString().Equals("")
+                    & reader["MaleOpenLoockeers"].ToString().Equals(""))
+                {
+                    MaleLockedcomboBox3.Items.Add(reader["MaleLockkedLoockers"]);
+                }
             }
+            UserDb.Close();
+        }
+        private void MaleOpencomboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UserDb.Open();
+            string query = "update Hals set (MaleLockkedLoockers, MaleOpenLoockeers) = (@Item2, @Item) " +
+                "where MaleLockkedLoockers like (@Item) ";
+            SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
+            cmd.Parameters.Add("@Item", System.Data.DbType.String).Value = MaleLockedcomboBox3.Text;
+            cmd.Parameters.Add("@Item2", System.Data.DbType.String).Value = null;
+            cmd.ExecuteNonQuery();
+            MaleLockedcomboBox3.Items.Clear();
+
+
+            
+            MaleLockedcomboBox3.Text = MaleOpencomboBox1.SelectedItem.ToString();
+            MaleLockedcomboBox3.Items.Add(MaleOpencomboBox1.SelectedItem);
+
+            string query2 = "update Hals set (MaleLockkedLoockers, MaleOpenLoockeers) = (@Item, @Item2) " +
+                "where MaleOpenLoockeers like (@Item) ";
+            SQLiteCommand cmd2 = new SQLiteCommand(query2, UserDb);
+            cmd2.Parameters.Add("@Item", System.Data.DbType.String).Value = MaleLockedcomboBox3.Text;
+            cmd2.Parameters.Add("@Item2", System.Data.DbType.String).Value = null;
+            cmd2.ExecuteNonQuery();
 
             UserDb.Close();
         }
+        private void feMaleOpencomboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UserDb.Open();
+            string query = "update Hals set (FeMaleLockkedLoockers, FeMaleOpenLoockers) = (@Item2, @Item) " +
+                "where FeMaleLockkedLoockers like (@Item) ";
+            SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
+            cmd.Parameters.Add("@Item", System.Data.DbType.String).Value = FeMaleLockedcomboBox4.Text;
+            cmd.Parameters.Add("@Item2", System.Data.DbType.String).Value = null;
+            cmd.ExecuteNonQuery();
+
+            FeMaleLockedcomboBox4.Items.Clear();
+            FeMaleLockedcomboBox4.Text = feMaleOpencomboBox2.SelectedItem.ToString();
+            FeMaleLockedcomboBox4.Items.Add(feMaleOpencomboBox2.SelectedItem);
+
+            string query2 = "update Hals set (FeMaleLockkedLoockers, FeMaleOpenLoockers) = (@Item, @Item2) " +
+                "where FeMaleOpenLoockers like (@Item) ";
+            SQLiteCommand cmd2 = new SQLiteCommand(query2, UserDb);
+            cmd2.Parameters.Add("@Item", System.Data.DbType.String).Value = FeMaleLockedcomboBox4.Text;
+            cmd2.Parameters.Add("@Item2", System.Data.DbType.String).Value = null;
+            cmd2.ExecuteNonQuery();
+
+            UserDb.Close();
+        }
+
 
 
 
@@ -128,7 +189,6 @@ namespace GymProject
                 {
                     if (reader["Gender"].Equals("Male"))
                     {
-                        
                         gender = Gender.male;
                         trener = new Treners(Convert.ToInt32(reader["ID"]), gender, reader["Login"].ToString(), 
                             reader["Pasword"].ToString(), reader["Name"].ToString(), reader["Subjects"].ToString(), clients);
@@ -137,17 +197,13 @@ namespace GymProject
                     {
                         gender = Gender.female;
 
-                    }
-
-
-                    
+                    } 
                 }
             }
-
-            
-
             UserDb.Close();
         }
+
+
 
         //public void Lockers()
         //{

@@ -54,8 +54,11 @@ namespace GymProject
             this.label5 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel20 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel23 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -64,9 +67,13 @@ namespace GymProject
             this.trenersComboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel22 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -76,34 +83,27 @@ namespace GymProject
             this.panel9 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel18 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel21 = new System.Windows.Forms.Panel();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.MaleOpencomboBox1 = new System.Windows.Forms.ComboBox();
-            this.feMaleOpencomboBox2 = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.MaleLockedcomboBox3 = new System.Windows.Forms.ComboBox();
-            this.FeMaleLockedcomboBox4 = new System.Windows.Forms.ComboBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.FeMaleLockedcomboBox4 = new System.Windows.Forms.ComboBox();
+            this.MaleLockedcomboBox3 = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.feMaleOpencomboBox2 = new System.Windows.Forms.ComboBox();
+            this.MaleOpencomboBox1 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -466,6 +466,16 @@ namespace GymProject
             this.panel14.Size = new System.Drawing.Size(277, 64);
             this.panel14.TabIndex = 3;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(3, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(125, 20);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "1 месяц 7990р\r\n";
+            // 
             // panel17
             // 
             this.panel17.Controls.Add(this.label16);
@@ -475,6 +485,16 @@ namespace GymProject
             this.panel17.Size = new System.Drawing.Size(277, 64);
             this.panel17.TabIndex = 4;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.Location = new System.Drawing.Point(3, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(149, 20);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "3 месяца 21 990р\r\n";
+            // 
             // panel20
             // 
             this.panel20.Controls.Add(this.label17);
@@ -483,6 +503,16 @@ namespace GymProject
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(277, 64);
             this.panel20.TabIndex = 5;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label17.Location = new System.Drawing.Point(3, 4);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(159, 20);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "6 месяцев 42 990р\r\n";
             // 
             // panel23
             // 
@@ -582,6 +612,16 @@ namespace GymProject
             this.panel10.Size = new System.Drawing.Size(276, 64);
             this.panel10.TabIndex = 2;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(167, 20);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "1 посещение 1990р\r\n";
+            // 
             // panel13
             // 
             this.panel13.Controls.Add(this.label11);
@@ -590,6 +630,16 @@ namespace GymProject
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(276, 64);
             this.panel13.TabIndex = 3;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(125, 20);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "1 месяц 5990р\r\n";
             // 
             // panel16
             // 
@@ -600,6 +650,16 @@ namespace GymProject
             this.panel16.Size = new System.Drawing.Size(276, 64);
             this.panel16.TabIndex = 4;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(5, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(149, 20);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "3 месяца 15 990р\r\n";
+            // 
             // panel19
             // 
             this.panel19.Controls.Add(this.label13);
@@ -608,6 +668,16 @@ namespace GymProject
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(276, 64);
             this.panel19.TabIndex = 5;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.Location = new System.Drawing.Point(2, 4);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(159, 20);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "6 месяцев 30 990р\r\n";
             // 
             // panel22
             // 
@@ -712,6 +782,16 @@ namespace GymProject
             this.panel12.Size = new System.Drawing.Size(275, 64);
             this.panel12.TabIndex = 3;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(125, 20);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "1 месяц 3990р\r\n";
+            // 
             // panel15
             // 
             this.panel15.Controls.Add(this.label8);
@@ -721,6 +801,16 @@ namespace GymProject
             this.panel15.Size = new System.Drawing.Size(275, 64);
             this.panel15.TabIndex = 4;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(3, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(135, 20);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "3 месяца 9990р\r\n";
+            // 
             // panel18
             // 
             this.panel18.Controls.Add(this.label9);
@@ -729,6 +819,16 @@ namespace GymProject
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(275, 64);
             this.panel18.TabIndex = 5;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(3, 4);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(159, 20);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "6 месяцев 18 990р\r\n";
             // 
             // panel21
             // 
@@ -748,6 +848,20 @@ namespace GymProject
             this.tabPage4.Size = new System.Drawing.Size(870, 544);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Залы";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(864, 538);
+            this.tableLayoutPanel5.TabIndex = 0;
             // 
             // tabPage5
             // 
@@ -769,212 +883,6 @@ namespace GymProject
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Раздевалка";
             // 
-            // tabPage6
-            // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 25);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(870, 544);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Новый клиент";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(870, 544);
-            this.tabPage1.TabIndex = 6;
-            this.tabPage1.Text = "Клиентская база";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(3, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(125, 20);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "1 месяц 3990р\r\n";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(3, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(135, 20);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "3 месяца 9990р\r\n";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(3, 4);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(159, 20);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "6 месяцев 18 990р\r\n";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(167, 20);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "1 посещение 1990р\r\n";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(125, 20);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "1 месяц 5990р\r\n";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(5, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(149, 20);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "3 месяца 15 990р\r\n";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(2, 4);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(159, 20);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "6 месяцев 30 990р\r\n";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(3, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(125, 20);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "1 месяц 7990р\r\n";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(3, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(149, 20);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "3 месяца 21 990р\r\n";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label17.Location = new System.Drawing.Point(3, 4);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(159, 20);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "6 месяцев 42 990р\r\n";
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(864, 538);
-            this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(50, 40);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(221, 25);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Совободные шкавчики";
-            // 
-            // MaleOpencomboBox1
-            // 
-            this.MaleOpencomboBox1.FormattingEnabled = true;
-            this.MaleOpencomboBox1.Location = new System.Drawing.Point(303, 40);
-            this.MaleOpencomboBox1.Name = "MaleOpencomboBox1";
-            this.MaleOpencomboBox1.Size = new System.Drawing.Size(121, 24);
-            this.MaleOpencomboBox1.TabIndex = 1;
-            // 
-            // feMaleOpencomboBox2
-            // 
-            this.feMaleOpencomboBox2.FormattingEnabled = true;
-            this.feMaleOpencomboBox2.Location = new System.Drawing.Point(303, 82);
-            this.feMaleOpencomboBox2.Name = "feMaleOpencomboBox2";
-            this.feMaleOpencomboBox2.Size = new System.Drawing.Size(121, 24);
-            this.feMaleOpencomboBox2.TabIndex = 2;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label18.Location = new System.Drawing.Point(50, 166);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(188, 25);
-            this.label18.TabIndex = 3;
-            this.label18.Text = "Занятые шкавчики";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label19.Location = new System.Drawing.Point(427, 82);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(31, 25);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "Ж";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label20.Location = new System.Drawing.Point(427, 40);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(28, 25);
-            this.label20.TabIndex = 5;
-            this.label20.Text = "М\r\n";
-            // 
-            // MaleLockedcomboBox3
-            // 
-            this.MaleLockedcomboBox3.FormattingEnabled = true;
-            this.MaleLockedcomboBox3.Location = new System.Drawing.Point(303, 166);
-            this.MaleLockedcomboBox3.Name = "MaleLockedcomboBox3";
-            this.MaleLockedcomboBox3.Size = new System.Drawing.Size(121, 24);
-            this.MaleLockedcomboBox3.TabIndex = 6;
-            // 
-            // FeMaleLockedcomboBox4
-            // 
-            this.FeMaleLockedcomboBox4.FormattingEnabled = true;
-            this.FeMaleLockedcomboBox4.Location = new System.Drawing.Point(303, 207);
-            this.FeMaleLockedcomboBox4.Name = "FeMaleLockedcomboBox4";
-            this.FeMaleLockedcomboBox4.Size = new System.Drawing.Size(121, 24);
-            this.FeMaleLockedcomboBox4.TabIndex = 7;
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -994,6 +902,100 @@ namespace GymProject
             this.label22.Size = new System.Drawing.Size(31, 25);
             this.label22.TabIndex = 8;
             this.label22.Text = "Ж";
+            // 
+            // FeMaleLockedcomboBox4
+            // 
+            this.FeMaleLockedcomboBox4.FormattingEnabled = true;
+            this.FeMaleLockedcomboBox4.Location = new System.Drawing.Point(303, 207);
+            this.FeMaleLockedcomboBox4.Name = "FeMaleLockedcomboBox4";
+            this.FeMaleLockedcomboBox4.Size = new System.Drawing.Size(121, 24);
+            this.FeMaleLockedcomboBox4.TabIndex = 7;
+            // 
+            // MaleLockedcomboBox3
+            // 
+            this.MaleLockedcomboBox3.FormattingEnabled = true;
+            this.MaleLockedcomboBox3.Location = new System.Drawing.Point(303, 166);
+            this.MaleLockedcomboBox3.Name = "MaleLockedcomboBox3";
+            this.MaleLockedcomboBox3.Size = new System.Drawing.Size(121, 24);
+            this.MaleLockedcomboBox3.TabIndex = 6;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label20.Location = new System.Drawing.Point(427, 40);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(28, 25);
+            this.label20.TabIndex = 5;
+            this.label20.Text = "М\r\n";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label19.Location = new System.Drawing.Point(427, 82);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(31, 25);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Ж";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label18.Location = new System.Drawing.Point(50, 166);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(188, 25);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Занятые шкавчики";
+            // 
+            // feMaleOpencomboBox2
+            // 
+            this.feMaleOpencomboBox2.FormattingEnabled = true;
+            this.feMaleOpencomboBox2.Location = new System.Drawing.Point(303, 82);
+            this.feMaleOpencomboBox2.Name = "feMaleOpencomboBox2";
+            this.feMaleOpencomboBox2.Size = new System.Drawing.Size(121, 24);
+            this.feMaleOpencomboBox2.TabIndex = 2;
+            this.feMaleOpencomboBox2.SelectedIndexChanged += new System.EventHandler(this.feMaleOpencomboBox2_SelectedIndexChanged);
+            // 
+            // MaleOpencomboBox1
+            // 
+            this.MaleOpencomboBox1.FormattingEnabled = true;
+            this.MaleOpencomboBox1.Location = new System.Drawing.Point(303, 40);
+            this.MaleOpencomboBox1.Name = "MaleOpencomboBox1";
+            this.MaleOpencomboBox1.Size = new System.Drawing.Size(121, 24);
+            this.MaleOpencomboBox1.TabIndex = 1;
+            this.MaleOpencomboBox1.SelectedIndexChanged += new System.EventHandler(this.MaleOpencomboBox1_SelectedIndexChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label14.Location = new System.Drawing.Point(50, 40);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(221, 25);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Совободные шкавчики";
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(870, 544);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Новый клиент";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(870, 544);
+            this.tabPage1.TabIndex = 6;
+            this.tabPage1.Text = "Клиентская база";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
