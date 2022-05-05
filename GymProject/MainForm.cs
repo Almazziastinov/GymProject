@@ -14,6 +14,10 @@ namespace GymProject
 {
     public partial class MainForm : Form
     {
+        public string ggg1 = "Премиум1_";
+        public string ggg2 = "Премиум1м_";
+        public string ggg3 = "Премиум3м_";
+        public string ggg4 = "Премиум6м_";
         private SQLiteConnection UserDb = new SQLiteConnection("Data Source=UsersDb.db; Version=3");
         public MainForm()
         {
@@ -25,12 +29,13 @@ namespace GymProject
         {
             TrenersToCB();
             LoockerToCB();
+            TextLable();
             //Lockers();
         }
 
         public void TrenersToCB()
         {
-            UserDb = new SQLiteConnection("Data Source=UsersDb.db; Version=3");
+            
             UserDb.Open();
             string query = $"select ID, Name, Subjects from Treners";
             SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
@@ -42,6 +47,7 @@ namespace GymProject
                 trenersComboBox2.Items.Add(reader["ID"] + " " + reader["Name"] +" "+ reader["Subjects"]);
             }
             UserDb.Close();
+            
         }
 
         
@@ -171,10 +177,10 @@ namespace GymProject
 
         private void button6_Click(object sender, EventArgs e)
         {
-            UserDb = new SQLiteConnection("Data Source=UsersDb.db; Version=3");
+            
             UserDb.Open();
-            string query = "select * from Treners where Login like '%' || @login || '%' " +
-                "and Pasword like '%' || @password || '%' ";
+            string query = "select * from Treners where Login like" +
+                "and Pasword like @password";
             SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
             cmd.Parameters.Add("@login", System.Data.DbType.String).Value = logintextBox1.Text;
             cmd.Parameters.Add("@password", System.Data.DbType.String).Value = paswordtextBox2.Text;
@@ -202,6 +208,163 @@ namespace GymProject
             }
             UserDb.Close();
         }
+
+        public void ApendText(RichTextBox richTextBox, string text, Font font)
+        {
+            richTextBox.Select(richTextBox.TextLength, 0);
+
+            richTextBox.SelectionFont = font;
+            richTextBox.AppendText(text);
+            richTextBox.SelectionFont = richTextBox.Font;
+        }
+
+        public void TextLable()
+        {
+            UserDb.Open();
+            string query = "select * from Hals ";
+            SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            int i1 = 0;
+            int i2 = 0;
+            int i3 = 0;
+            int i4 = 0;
+            while (reader.Read())
+            {
+                if (reader["MaleLockkedLoockers"].ToString() != ""
+                    || reader["FeMaleLockkedLoockers"].ToString() != "")
+                {
+                    if (reader["Name"].ToString().Equals("Аэробика"))
+                    {
+                        i4++;
+                    }
+                    else if (reader["Name"].ToString().Equals("Бассейн"))
+                    {
+                        i1++;
+                    }
+                    else if (reader["Name"].ToString().Equals("Тренажорный зал"))
+                    {
+                        i2++;
+                    }
+                    else if (reader["Name"].ToString().Equals("Зал единоборств"))
+                    {
+                        i3++;
+                    }
+                }
+                
+                
+            }
+            
+            string basPip = i1.ToString();
+            string gymPip = i2.ToString();
+            string fightPip = i3.ToString();
+            string aeroPip = i4.ToString();
+            
+
+            Font font = new Font(basikRITB.Font, FontStyle.Bold);
+
+
+            ApendText(basikRITB, "Бассейн ", font);
+            basikRITB.AppendText("длиной 25 метров с 7 дорожками, оборудован системой очистки воды \n" + basPip + " человек");
+            ApendText(gymRITB, "Тренажёрный зал ", font);
+            gymRITB.AppendText("с новым и надёжным оборудованием для силовых и кардио тренировок \n" + gymPip + " человек");
+            ApendText(fightRITB, "Зал единоборств ", font);
+            fightRITB.AppendText("оборудован рингом, татами для борьбы, настенные боксёрские подушки, подвесные груши, " +
+                "которые позволяют отрабатывать любые виды ударов, развивать манёвренность \n" + fightPip + " человек");
+            ApendText(AeroRITB, "Зал аэробики ", font);
+            AeroRITB.AppendText("оборудован хореографическим станком и ростовыми зеркалами, оснащён спортивным " +
+                "оборудованием (степ-платформы, скакалки, гантели и т.д.). \n" + aeroPip + " человек");
+
+            UserDb.Close();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.ToString().Equals("") || textBox2.Text.ToString().Equals("") ||
+                textBox3.Text.ToString().Equals("") || TarifCB.Text.ToString().Equals("") ||
+                (MaleRB.Checked == false & FeMaleRB.Checked == false) || textBox6.Text.ToString().Equals(""))
+            {
+                MessageBox.Show("Заполните все строки!","Сообщение",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1,
+                MessageBoxOptions.DefaultDesktopOnly);
+
+            }
+            else
+            {
+                UserDb.Open();
+
+                string gender = "";
+                if (MaleRB.Checked)
+                {
+                    gender = "Мужской";
+                }
+                else
+                {
+                    gender = "Женский";
+                }
+                string query = "insert into Clients (Gender, Name, Tarif, Loocker, Treners) values (@Gender, @Name, @Tarif, @Loocker, @Treners)";
+                SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
+                cmd.Parameters.Add("@Gender", DbType.String).Value = gender;
+                cmd.Parameters.Add("@Name", DbType.String).Value = $"{textBox1.Text} {textBox2.Text} {textBox3.Text}, {textBox6.Text}";
+                cmd.Parameters.Add("@Tarif", DbType.String).Value = TarifCB.Text;
+                if (gender.Equals("Мужской"))
+                {
+                    if (MaleLockedcomboBox3.Text.Equals(""))
+                    {
+                        MessageBox.Show("Пожалуйста выберите шкафчик!", "Сообщение",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.DefaultDesktopOnly);
+                        return;
+                    }
+                    cmd.Parameters.Add("@Loocker", DbType.String).Value = MaleLockedcomboBox3.Text;
+                }
+                else
+                {
+                    if (FeMaleLockedcomboBox4.Text.Equals(""))
+                    {
+                        MessageBox.Show("Пожалуйста выберите шкафчик!", "Сообщение",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.DefaultDesktopOnly);
+                        return;
+                    }
+                    cmd.Parameters.Add("@Loocker", DbType.String).Value = FeMaleLockedcomboBox4.Text;
+                }
+                if (TarifCB.Text.Equals($"{ggg1}{trenersComboBox2.Text}") || TarifCB.Text.Equals($"{ggg2}{trenersComboBox2.Text}") ||
+                    TarifCB.Text.Equals($"{ggg3}{trenersComboBox2.Text}") || TarifCB.Text.Equals($"{ggg4}{trenersComboBox2.Text}"))
+                {
+                    cmd.Parameters.Add("@Treners", DbType.String).Value = trenersComboBox2.Text;
+                }
+                else
+                {
+                    cmd.Parameters.Add("@Treners", DbType.String).Value = trenersComboBox1.Text;
+                }
+                cmd.ExecuteNonQuery();
+
+                UserDb.Close();
+            }
+        }
+
+        private void trenersComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TarifCB.Items.Add($"Про1_{trenersComboBox1.Text}");
+            TarifCB.Items.Add($"Про1м_{trenersComboBox1.Text}");
+            TarifCB.Items.Add($"Про3м_{trenersComboBox1.Text}");
+            TarifCB.Items.Add($"Про6м_{trenersComboBox1.Text}");
+        }
+
+        private void trenersComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TarifCB.Items.Add($"{ggg1}{trenersComboBox2.Text}");
+            TarifCB.Items.Add($"{ggg2}{trenersComboBox2.Text}");
+            TarifCB.Items.Add($"{ggg3}{trenersComboBox2.Text}");
+            TarifCB.Items.Add($"{ggg4}{trenersComboBox2.Text}");
+        }
+
 
 
 
