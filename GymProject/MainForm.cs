@@ -280,76 +280,131 @@ namespace GymProject
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.ToString().Equals("") || textBox2.Text.ToString().Equals("") ||
-                textBox3.Text.ToString().Equals("") || TarifCB.Text.ToString().Equals("") ||
-                (MaleRB.Checked == false & FeMaleRB.Checked == false) || textBox6.Text.ToString().Equals(""))
+            UserDb.Open();
+            string query1 = "Select * from Clients where Name like (@Name)";
+            SQLiteCommand cmd1 = new SQLiteCommand(query1, UserDb);
+            cmd1.Parameters.Add("@Name", DbType.String).Value = $"{textBox1.Text} {textBox2.Text} {textBox3.Text}, {textBox6.Text}";
+            SQLiteDataReader reader = cmd1.ExecuteReader();
+            if (reader.HasRows)
             {
-                MessageBox.Show("Заполните все строки!","Сообщение",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information,
-                MessageBoxDefaultButton.Button1,
-                MessageBoxOptions.DefaultDesktopOnly);
+                MessageBox.Show("Извините но такой клиент уже существует", "Сообщение",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly);
 
+                
             }
             else
             {
-                UserDb.Open();
+                if (textBox1.Text.ToString().Equals("") || textBox2.Text.ToString().Equals("") ||
+                               textBox3.Text.ToString().Equals("") || TarifCB.Text.ToString().Equals("") ||
+                               (MaleRB.Checked == false & FeMaleRB.Checked == false) || textBox6.Text.ToString().Equals(""))
+                {
+                    MessageBox.Show("Заполните все строки!", "Сообщение",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly);
 
-                string gender = "";
-                if (MaleRB.Checked)
-                {
-                    gender = "Мужской";
                 }
                 else
                 {
-                    gender = "Женский";
-                }
-                string query = "insert into Clients (Gender, Name, Tarif, Loocker, Treners) values (@Gender, @Name, @Tarif, @Loocker, @Treners)";
-                SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
-                cmd.Parameters.Add("@Gender", DbType.String).Value = gender;
-                cmd.Parameters.Add("@Name", DbType.String).Value = $"{textBox1.Text} {textBox2.Text} {textBox3.Text}, {textBox6.Text}";
-                cmd.Parameters.Add("@Tarif", DbType.String).Value = TarifCB.Text;
-                if (gender.Equals("Мужской"))
-                {
-                    if (MaleLockedcomboBox3.Text.Equals(""))
-                    {
-                        MessageBox.Show("Пожалуйста выберите шкафчик!", "Сообщение",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information,
-                        MessageBoxDefaultButton.Button1,
-                        MessageBoxOptions.DefaultDesktopOnly);
-                        return;
-                    }
-                    cmd.Parameters.Add("@Loocker", DbType.String).Value = MaleLockedcomboBox3.Text;
-                }
-                else
-                {
-                    if (FeMaleLockedcomboBox4.Text.Equals(""))
-                    {
-                        MessageBox.Show("Пожалуйста выберите шкафчик!", "Сообщение",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information,
-                        MessageBoxDefaultButton.Button1,
-                        MessageBoxOptions.DefaultDesktopOnly);
-                        return;
-                    }
-                    cmd.Parameters.Add("@Loocker", DbType.String).Value = FeMaleLockedcomboBox4.Text;
-                }
-                if (TarifCB.Text.Equals($"{ggg1}{trenersComboBox2.Text}") || TarifCB.Text.Equals($"{ggg2}{trenersComboBox2.Text}") ||
-                    TarifCB.Text.Equals($"{ggg3}{trenersComboBox2.Text}") || TarifCB.Text.Equals($"{ggg4}{trenersComboBox2.Text}"))
-                {
-                    cmd.Parameters.Add("@Treners", DbType.String).Value = trenersComboBox2.Text;
-                }
-                else
-                {
-                    cmd.Parameters.Add("@Treners", DbType.String).Value = trenersComboBox1.Text;
-                }
-                cmd.ExecuteNonQuery();
 
-                UserDb.Close();
-                BdtoView();
+
+                    string gender = "";
+                    if (MaleRB.Checked)
+                    {
+                        gender = "Мужской";
+                    }
+                    else
+                    {
+                        gender = "Женский";
+                    }
+                    string query = "insert into Clients (Gender, Name, Tarif, Loocker, Treners, Date, TruDate) values (@Gender, @Name, @Tarif, @Loocker, @Treners, @Date, @TruDate)";
+                    SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
+                    cmd.Parameters.Add("@Gender", DbType.String).Value = gender;
+                    cmd.Parameters.Add("@Name", DbType.String).Value = $"{textBox1.Text} {textBox2.Text} {textBox3.Text}, {textBox6.Text}";
+                    cmd.Parameters.Add("@Tarif", DbType.String).Value = TarifCB.Text;
+                    if (gender.Equals("Мужской"))
+                    {
+                        if (MaleLockedcomboBox3.Text.Equals(""))
+                        {
+                            MessageBox.Show("Пожалуйста выберите шкафчик!", "Сообщение",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information,
+                            MessageBoxDefaultButton.Button1,
+                            MessageBoxOptions.DefaultDesktopOnly);
+                            return;
+                        }
+                        cmd.Parameters.Add("@Loocker", DbType.String).Value = MaleLockedcomboBox3.Text;
+                    }
+                    else
+                    {
+                        if (FeMaleLockedcomboBox4.Text.Equals(""))
+                        {
+                            MessageBox.Show("Пожалуйста выберите шкафчик!", "Сообщение",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information,
+                            MessageBoxDefaultButton.Button1,
+                            MessageBoxOptions.DefaultDesktopOnly);
+                            return;
+                        }
+                        cmd.Parameters.Add("@Loocker", DbType.String).Value = FeMaleLockedcomboBox4.Text;
+                    }
+                    if (TarifCB.Text.Equals($"{ggg1}{trenersComboBox2.Text}") || TarifCB.Text.Equals($"{ggg2}{trenersComboBox2.Text}") ||
+                        TarifCB.Text.Equals($"{ggg3}{trenersComboBox2.Text}") || TarifCB.Text.Equals($"{ggg4}{trenersComboBox2.Text}"))
+                    {
+                        cmd.Parameters.Add("@Treners", DbType.String).Value = trenersComboBox2.Text;
+                    }
+                    else
+                    {
+                        cmd.Parameters.Add("@Treners", DbType.String).Value = trenersComboBox1.Text;
+                    }
+
+                    DateTime time = DateTime.Now;
+                    cmd.Parameters.Add("@TruDate", DbType.String).Value = time.ToShortDateString();
+
+
+                    if (TarifCB.Text.Equals($"{ggg1}{trenersComboBox2.Text}") || TarifCB.Text.Equals($"Про1_{trenersComboBox1.Text}") ||
+                        TarifCB.Text.Equals($"Стандарт1"))
+                    {
+                        
+                        time.AddDays(1);
+                        cmd.Parameters.Add("@Date", DbType.String).Value = time.ToShortDateString();
+                        
+                    }
+                    else if (TarifCB.Text.Equals($"{ggg2}{trenersComboBox2.Text}") || TarifCB.Text.Equals($"Про1м_{trenersComboBox1.Text}") ||
+                        TarifCB.Text.Equals($"Стандарт1м"))
+                    {
+                        time.AddMonths(1);
+                        cmd.Parameters.Add("@Date", DbType.String).Value = time.ToShortDateString();
+                        
+                    }
+                    else if (TarifCB.Text.Equals($"{ggg3}{trenersComboBox2.Text}") || TarifCB.Text.Equals($"Про3м_{trenersComboBox1.Text}") ||
+                        TarifCB.Text.Equals($"Стандарт3м"))
+                    {
+                        time.AddMonths(3);
+                        cmd.Parameters.Add("@Date", DbType.String).Value = time.ToShortDateString();
+                        
+                    }
+                    else if (TarifCB.Text.Equals($"{ggg4}{trenersComboBox2.Text}") || TarifCB.Text.Equals($"Про6м_{trenersComboBox1.Text}") ||
+                        TarifCB.Text.Equals($"Стандарт6м"))
+                    {
+                        time.AddMonths(6);
+                        cmd.Parameters.Add("@Date", DbType.String).Value = time.ToShortDateString();
+                        
+                    }
+
+                    cmd.ExecuteNonQuery();
+
+
+                }
             }
+            UserDb.Close();
+            BdtoView();
         }
+
 
         private void trenersComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -380,6 +435,30 @@ namespace GymProject
             dataGridView1.DataSource = dt;
             UserDb.Close();
 
+        }
+        private void DateCheck()
+        {
+            UserDb.Open();
+
+            string query = "select (Date) from Clients";
+            SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            DateTime now = DateTime.Now;
+            
+            
+            
+            DateTime date;
+            while (reader.Read())
+            {
+                date = Convert.ToDateTime(reader["Date"]);
+                if (date>now)
+                {
+
+                }
+            }
+
+
+            UserDb.Close();
         }
 
 
