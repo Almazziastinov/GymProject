@@ -30,6 +30,7 @@ namespace GymProject
             TrenersToCB();
             LoockerToCB();
             TextLable();
+            BdtoView();
             //Lockers();
         }
 
@@ -346,6 +347,7 @@ namespace GymProject
                 cmd.ExecuteNonQuery();
 
                 UserDb.Close();
+                BdtoView();
             }
         }
 
@@ -365,6 +367,20 @@ namespace GymProject
             TarifCB.Items.Add($"{ggg4}{trenersComboBox2.Text}");
         }
 
+        private void BdtoView()
+        {
+
+            UserDb.Open();
+            string query = $"select * from Clients";
+            SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
+            DataTable dt = new DataTable();
+
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+            adapter.Fill(dt);
+            dataGridView1.DataSource = dt;
+            UserDb.Close();
+
+        }
 
 
 
