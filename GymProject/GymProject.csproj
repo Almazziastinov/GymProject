@@ -70,7 +70,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Centralazer.cs" />
     <Compile Include="Clients.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
