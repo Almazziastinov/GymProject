@@ -233,6 +233,10 @@ namespace GymProject
                     label2.Text = "Добро пожаловать господин" + reader["Name"];
                 }
             }
+            else
+            {
+                MessageBox.Show("Не правильный логин или пароль!!", "Сообщение");
+            }
             UserDb.Close();
         }
 
