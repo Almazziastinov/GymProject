@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
+using Microsoft.Office.Interop.Excel;
+using Application = Microsoft.Office.Interop.Excel.Application;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
+
 
 namespace GymProject
 {
@@ -18,6 +23,12 @@ namespace GymProject
         public string ggg2 = "Премиум1м_";
         public string ggg3 = "Премиум3м_";
         public string ggg4 = "Премиум6м_";
+
+        private Application application;
+        private Workbook workBook;
+        private Worksheet worksheet;
+
+
         private SQLiteConnection UserDb = new SQLiteConnection("Data Source=UsersDb.db; Version=3");
         public MainForm()
         {
@@ -31,7 +42,10 @@ namespace GymProject
             LoockerToCB();
             TextLable();
             BdtoView();
+            DateCheck();
             //Lockers();
+
+            
         }
 
         public void TrenersToCB()
@@ -55,7 +69,10 @@ namespace GymProject
 
         public void LoockerToCB()
         {
-            
+            MaleOpencomboBox1.Items.Clear();
+            MaleLockedcomboBox3.Items.Clear();
+            feMaleOpencomboBox2.Items.Clear();
+            FeMaleLockedcomboBox4.Items.Clear();
             UserDb.Open();
             string query = $"select * from Hals";
             SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
@@ -175,12 +192,18 @@ namespace GymProject
         {
             logintextBox1.Text = "";
         }
+        private void paswordtextBox2_Click(object sender, EventArgs e)
+        {
+            paswordtextBox2.Text = "";
+            paswordtextBox2.PasswordChar = '*';
+        }
+        
 
         private void button6_Click(object sender, EventArgs e)
         {
             
             UserDb.Open();
-            string query = "select * from Treners where Login like" +
+            string query = "select * from Treners where Login like @login " +
                 "and Pasword like @password";
             SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
             cmd.Parameters.Add("@login", System.Data.DbType.String).Value = logintextBox1.Text;
@@ -188,6 +211,8 @@ namespace GymProject
             SQLiteDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
+                pictureBox4.Visible = false;
+                
                 Gender gender;
                 Treners trener;
                 List<Clients> clients = new List<Clients>();
@@ -204,13 +229,14 @@ namespace GymProject
                     {
                         gender = Gender.female;
 
-                    } 
+                    }
+                    label2.Text = "Добро пожаловать господин" + reader["Name"];
                 }
             }
             UserDb.Close();
         }
 
-        public void ApendText(RichTextBox richTextBox, string text, Font font)
+        public void ApendText(RichTextBox richTextBox, string text, System.Drawing.Font font)
         {
             richTextBox.Select(richTextBox.TextLength, 0);
 
@@ -261,7 +287,7 @@ namespace GymProject
             string aeroPip = i4.ToString();
             
 
-            Font font = new Font(basikRITB.Font, FontStyle.Bold);
+            System.Drawing.Font font = new System.Drawing.Font(basikRITB.Font, FontStyle.Bold);
 
 
             ApendText(basikRITB, "Бассейн ", font);
@@ -283,7 +309,7 @@ namespace GymProject
             UserDb.Open();
             string query1 = "Select * from Clients where Name like (@Name)";
             SQLiteCommand cmd1 = new SQLiteCommand(query1, UserDb);
-            cmd1.Parameters.Add("@Name", DbType.String).Value = $"{textBox1.Text} {textBox2.Text} {textBox3.Text}, {textBox6.Text}";
+            cmd1.Parameters.Add("@Name", DbType.String).Value = $"{textBox1.Text} {textBox2.Text} {textBox3.Text}";
             SQLiteDataReader reader = cmd1.ExecuteReader();
             if (reader.HasRows)
             {
@@ -321,10 +347,11 @@ namespace GymProject
                     {
                         gender = "Женский";
                     }
-                    string query = "insert into Clients (Gender, Name, Tarif, Loocker, Treners, Date, TruDate) values (@Gender, @Name, @Tarif, @Loocker, @Treners, @Date, @TruDate)";
+                    string query = "insert into Clients (Gender, Name, Age,Tarif, Loocker, Treners, Date, TruDate) values (@Gender, @Name, @Age, @Tarif, @Loocker, @Treners, @Date, @TruDate)";
                     SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
                     cmd.Parameters.Add("@Gender", DbType.String).Value = gender;
-                    cmd.Parameters.Add("@Name", DbType.String).Value = $"{textBox1.Text} {textBox2.Text} {textBox3.Text}, {textBox6.Text}";
+                    cmd.Parameters.Add("@Name", DbType.String).Value = $"{textBox1.Text} {textBox2.Text} {textBox3.Text}";
+                    cmd.Parameters.Add("@Age", DbType.Int32).Value = Convert.ToInt32(textBox6.Text);
                     cmd.Parameters.Add("@Tarif", DbType.String).Value = TarifCB.Text;
                     if (gender.Equals("Мужской"))
                     {
@@ -362,10 +389,10 @@ namespace GymProject
                         cmd.Parameters.Add("@Treners", DbType.String).Value = trenersComboBox1.Text;
                     }
 
+
+                    // Добавление времени в зависимости от тарифа
                     DateTime time = DateTime.Now;
                     cmd.Parameters.Add("@TruDate", DbType.String).Value = time.ToShortDateString();
-
-
                     if (TarifCB.Text.Equals($"{ggg1}{trenersComboBox2.Text}") || TarifCB.Text.Equals($"Про1_{trenersComboBox1.Text}") ||
                         TarifCB.Text.Equals($"Стандарт1"))
                     {
@@ -403,6 +430,8 @@ namespace GymProject
             }
             UserDb.Close();
             BdtoView();
+            LoockerToCB();
+            DateCheck();
         }
 
 
@@ -424,42 +453,141 @@ namespace GymProject
 
         private void BdtoView()
         {
-
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black; ;
+            dataGridView1.EnableHeadersVisualStyles = false;
             UserDb.Open();
-            string query = $"select * from Clients";
+
+            string query = "select ID, Name, Age, Gender, Tarif, TruDate from Clients";
+            
+            
+
             SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
 
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
             adapter.Fill(dt);
             dataGridView1.DataSource = dt;
             UserDb.Close();
-
         }
         private void DateCheck()
         {
-            UserDb.Open();
+            //UserDb.Open();
 
-            string query = "select (Date) from Clients";
+            //string query = "select * from Clients";
+            //SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
+            //SQLiteDataReader reader = cmd.ExecuteReader();
+            //DateTime now = DateTime.Now;
+
+            //int temp = 0;
+            //int i = 1;
+            //DateTime date;
+            //while (reader.Read())
+            //{
+
+            //    dataGridView1.Rows[i].Cells["ID"].Value = reader["ID"].ToString();
+            //    dataGridView1.Rows[i].Cells[1].Value = reader["Name"].ToString();
+            //    dataGridView1.Rows[i].Cells[2].Value = reader["Age"].ToString();
+            //    dataGridView1.Rows[i].Cells[3].Value = reader["Gender"].ToString();
+            //    dataGridView1.Rows[i].Cells[4].Value = reader["Tarif"].ToString();
+
+            //    date = Convert.ToDateTime(reader["Date"]);
+            //    temp = Convert.ToInt32(now);
+
+            //    if (Convert.ToInt32(reader["Date"]) > temp)
+            //    {
+            //        dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "ChekingColumn", HeaderText = "✔" });
+            //        dataGridView1.Rows[i].Cells["ChekingColumn"].Value = reader["Date"].ToString();
+            //        i++;
+            //    }
+            //    dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "Data", HeaderText = "Data" });
+            //    dataGridView1.Rows[i].Cells["Data"].Value = reader["TruDate"].ToString();
+            //}
+
+
+            //UserDb.Close();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            UserDb.Open();
+            string query = "Select * from Clients";
             SQLiteCommand cmd = new SQLiteCommand(query, UserDb);
             SQLiteDataReader reader = cmd.ExecuteReader();
-            DateTime now = DateTime.Now;
+            int i = 1;
             
-            
-            
-            DateTime date;
             while (reader.Read())
             {
-                date = Convert.ToDateTime(reader["Date"]);
-                if (date>now)
+                application = new Application
                 {
+                    DisplayAlerts = false
+                };
+                const string template = "template.xlsx";
 
-                }
+
+                workBook = application.Workbooks.Open(Path.Combine(Environment.CurrentDirectory, template));
+
+
+                worksheet = workBook.ActiveSheet as Worksheet;
+
+
+                worksheet.Cells[i, 1] = DateTime.Now;
+                worksheet.Cells[i, 2] = reader["ID"].ToString();
+                worksheet.Cells[i, 3] = reader["Gender"].ToString();
+                worksheet.Cells[i, 4] = reader["Name"].ToString();
+                worksheet.Cells[i, 5] = reader["Age"].ToString();
+                worksheet.Cells[i, 6] = reader["Tarif"].ToString();
+                worksheet.Cells[i, 7] = reader["Loocker"].ToString();
+                worksheet.Cells[i, 8] = reader["Treners"].ToString();
+                worksheet.Cells[i, 9] = reader["TruDate"].ToString();
+
+                i++;
             }
+            
 
+            application.Visible = true;
+            TopMost = true;
+
+            button9.Enabled = true;
 
             UserDb.Close();
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string savedFileName = "book1.xlsm";
+            workBook.SaveAs(Path.Combine(Environment.CurrentDirectory, savedFileName));
+            CloseExcel();
+        }
+        private void CloseExcel()
+        {
+            if (application != null)
+            {
+                int excelProcessId = -1;
+                GetWindowThreadProcessId(application.Hwnd, ref excelProcessId);
+
+                Marshal.ReleaseComObject(worksheet);
+                workBook.Close();
+                Marshal.ReleaseComObject(workBook);
+                application.Quit();
+                Marshal.ReleaseComObject(application);
+
+                application = null;
+                // Прибиваем висящий процесс
+                try
+                {
+                    Process process = Process.GetProcessById(excelProcessId);
+                    process.Kill();
+                }
+                finally { }
+            }
+        }
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern uint GetWindowThreadProcessId(int hWnd, ref int lpdwProcessId);
+
+        
+
 
 
 

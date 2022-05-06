@@ -29,8 +29,11 @@ namespace GymProject
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
@@ -136,8 +139,12 @@ namespace GymProject
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -145,6 +152,7 @@ namespace GymProject
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -185,6 +193,9 @@ namespace GymProject
             this.tabPage6.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -203,13 +214,14 @@ namespace GymProject
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1282, 603);
+            this.splitContainer1.Size = new System.Drawing.Size(1332, 603);
             this.splitContainer1.SplitterDistance = 220;
             this.splitContainer1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel2.Controls.Add(this.pictureBox7);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.button5);
@@ -243,7 +255,7 @@ namespace GymProject
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(125, 128);
+            this.label2.Location = new System.Drawing.Point(14, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 17);
             this.label2.TabIndex = 8;
@@ -338,6 +350,7 @@ namespace GymProject
             this.paswordtextBox2.TabIndex = 1;
             this.paswordtextBox2.Text = "Пароль";
             this.paswordtextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.paswordtextBox2.Click += new System.EventHandler(this.paswordtextBox2_Click);
             // 
             // logintextBox1
             // 
@@ -357,7 +370,7 @@ namespace GymProject
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1058, 603);
+            this.panel1.Size = new System.Drawing.Size(1108, 603);
             this.panel1.TabIndex = 0;
             // 
             // tabControl1
@@ -374,15 +387,16 @@ namespace GymProject
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(0, 0);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1058, 603);
+            this.tabControl1.Size = new System.Drawing.Size(1108, 603);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.pictureBox6);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1050, 574);
+            this.tabPage2.Size = new System.Drawing.Size(1100, 574);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = ">";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -394,7 +408,7 @@ namespace GymProject
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1050, 574);
+            this.tabPage3.Size = new System.Drawing.Size(1100, 574);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Тарифы";
             // 
@@ -414,7 +428,7 @@ namespace GymProject
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 568F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1044, 568);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1094, 568);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.tableLayoutPanel1_CellPaint);
             // 
@@ -430,7 +444,7 @@ namespace GymProject
             this.tableLayoutPanel4.Controls.Add(this.panel20, 0, 5);
             this.tableLayoutPanel4.Controls.Add(this.panel23, 0, 6);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(698, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(731, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 7;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -440,7 +454,7 @@ namespace GymProject
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(343, 562);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(360, 562);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // panel5
@@ -449,7 +463,7 @@ namespace GymProject
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(337, 44);
+            this.panel5.Size = new System.Drawing.Size(354, 44);
             this.panel5.TabIndex = 0;
             // 
             // linkLabel3
@@ -458,7 +472,7 @@ namespace GymProject
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.linkLabel3.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel3.Location = new System.Drawing.Point(123, 15);
+            this.linkLabel3.Location = new System.Drawing.Point(132, 15);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(102, 25);
             this.linkLabel3.TabIndex = 0;
@@ -472,7 +486,7 @@ namespace GymProject
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(3, 53);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(337, 124);
+            this.panel8.Size = new System.Drawing.Size(354, 124);
             this.panel8.TabIndex = 1;
             // 
             // trenersComboBox2
@@ -484,7 +498,7 @@ namespace GymProject
             "yuyuj",
             "ykyuk",
             "uliuil"});
-            this.trenersComboBox2.Location = new System.Drawing.Point(30, 67);
+            this.trenersComboBox2.Location = new System.Drawing.Point(39, 67);
             this.trenersComboBox2.Name = "trenersComboBox2";
             this.trenersComboBox2.Size = new System.Drawing.Size(270, 24);
             this.trenersComboBox2.TabIndex = 3;
@@ -505,7 +519,7 @@ namespace GymProject
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel11.Location = new System.Drawing.Point(3, 183);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(337, 64);
+            this.panel11.Size = new System.Drawing.Size(354, 64);
             this.panel11.TabIndex = 2;
             // 
             // panel14
@@ -514,7 +528,7 @@ namespace GymProject
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel14.Location = new System.Drawing.Point(3, 253);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(337, 64);
+            this.panel14.Size = new System.Drawing.Size(354, 64);
             this.panel14.TabIndex = 3;
             // 
             // label15
@@ -533,7 +547,7 @@ namespace GymProject
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel17.Location = new System.Drawing.Point(3, 323);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(337, 64);
+            this.panel17.Size = new System.Drawing.Size(354, 64);
             this.panel17.TabIndex = 4;
             // 
             // label16
@@ -552,7 +566,7 @@ namespace GymProject
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel20.Location = new System.Drawing.Point(3, 393);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(337, 64);
+            this.panel20.Size = new System.Drawing.Size(354, 64);
             this.panel20.TabIndex = 5;
             // 
             // label17
@@ -570,7 +584,7 @@ namespace GymProject
             this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel23.Location = new System.Drawing.Point(3, 463);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(337, 96);
+            this.panel23.Size = new System.Drawing.Size(354, 96);
             this.panel23.TabIndex = 6;
             // 
             // tableLayoutPanel3
@@ -585,7 +599,7 @@ namespace GymProject
             this.tableLayoutPanel3.Controls.Add(this.panel19, 0, 5);
             this.tableLayoutPanel3.Controls.Add(this.panel22, 0, 6);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(350, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(367, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 7;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -595,7 +609,7 @@ namespace GymProject
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(342, 562);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(358, 562);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // panel4
@@ -604,7 +618,7 @@ namespace GymProject
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(336, 44);
+            this.panel4.Size = new System.Drawing.Size(352, 44);
             this.panel4.TabIndex = 0;
             // 
             // linkLabel2
@@ -613,7 +627,7 @@ namespace GymProject
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.linkLabel2.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel2.Location = new System.Drawing.Point(145, 15);
+            this.linkLabel2.Location = new System.Drawing.Point(153, 15);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(48, 25);
             this.linkLabel2.TabIndex = 0;
@@ -627,7 +641,7 @@ namespace GymProject
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(3, 53);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(336, 124);
+            this.panel7.Size = new System.Drawing.Size(352, 124);
             this.panel7.TabIndex = 1;
             // 
             // trenersComboBox1
@@ -639,7 +653,7 @@ namespace GymProject
             "yuyuj",
             "ykyuk",
             "uliuil"});
-            this.trenersComboBox1.Location = new System.Drawing.Point(30, 41);
+            this.trenersComboBox1.Location = new System.Drawing.Point(38, 41);
             this.trenersComboBox1.Name = "trenersComboBox1";
             this.trenersComboBox1.Size = new System.Drawing.Size(270, 24);
             this.trenersComboBox1.TabIndex = 2;
@@ -661,7 +675,7 @@ namespace GymProject
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(3, 183);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(336, 64);
+            this.panel10.Size = new System.Drawing.Size(352, 64);
             this.panel10.TabIndex = 2;
             // 
             // label10
@@ -680,7 +694,7 @@ namespace GymProject
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel13.Location = new System.Drawing.Point(3, 253);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(336, 64);
+            this.panel13.Size = new System.Drawing.Size(352, 64);
             this.panel13.TabIndex = 3;
             // 
             // label11
@@ -699,7 +713,7 @@ namespace GymProject
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel16.Location = new System.Drawing.Point(3, 323);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(336, 64);
+            this.panel16.Size = new System.Drawing.Size(352, 64);
             this.panel16.TabIndex = 4;
             // 
             // label12
@@ -718,7 +732,7 @@ namespace GymProject
             this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel19.Location = new System.Drawing.Point(3, 393);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(336, 64);
+            this.panel19.Size = new System.Drawing.Size(352, 64);
             this.panel19.TabIndex = 5;
             // 
             // label13
@@ -736,7 +750,7 @@ namespace GymProject
             this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel22.Location = new System.Drawing.Point(3, 463);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(336, 96);
+            this.panel22.Size = new System.Drawing.Size(352, 96);
             this.panel22.TabIndex = 6;
             // 
             // tableLayoutPanel2
@@ -761,7 +775,7 @@ namespace GymProject
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(341, 562);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(358, 562);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel3
@@ -770,7 +784,7 @@ namespace GymProject
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(335, 44);
+            this.panel3.Size = new System.Drawing.Size(352, 44);
             this.panel3.TabIndex = 0;
             // 
             // linkLabel1
@@ -779,7 +793,7 @@ namespace GymProject
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(116, 15);
+            this.linkLabel1.Location = new System.Drawing.Point(125, 15);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(103, 25);
             this.linkLabel1.TabIndex = 0;
@@ -792,7 +806,7 @@ namespace GymProject
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 53);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(335, 124);
+            this.panel6.Size = new System.Drawing.Size(352, 124);
             this.panel6.TabIndex = 1;
             // 
             // label3
@@ -812,7 +826,7 @@ namespace GymProject
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(3, 183);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(335, 64);
+            this.panel9.Size = new System.Drawing.Size(352, 64);
             this.panel9.TabIndex = 2;
             // 
             // label6
@@ -831,7 +845,7 @@ namespace GymProject
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Location = new System.Drawing.Point(3, 253);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(335, 64);
+            this.panel12.Size = new System.Drawing.Size(352, 64);
             this.panel12.TabIndex = 3;
             // 
             // label7
@@ -850,7 +864,7 @@ namespace GymProject
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Location = new System.Drawing.Point(3, 323);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(335, 64);
+            this.panel15.Size = new System.Drawing.Size(352, 64);
             this.panel15.TabIndex = 4;
             // 
             // label8
@@ -869,7 +883,7 @@ namespace GymProject
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel18.Location = new System.Drawing.Point(3, 393);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(335, 64);
+            this.panel18.Size = new System.Drawing.Size(352, 64);
             this.panel18.TabIndex = 5;
             // 
             // label9
@@ -887,7 +901,7 @@ namespace GymProject
             this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel21.Location = new System.Drawing.Point(3, 463);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(335, 96);
+            this.panel21.Size = new System.Drawing.Size(352, 96);
             this.panel21.TabIndex = 6;
             // 
             // tabPage4
@@ -897,7 +911,7 @@ namespace GymProject
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1050, 574);
+            this.tabPage4.Size = new System.Drawing.Size(1100, 574);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Залы";
             // 
@@ -916,7 +930,7 @@ namespace GymProject
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.30986F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.69014F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1044, 568);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1094, 568);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // tableLayoutPanel9
@@ -926,12 +940,12 @@ namespace GymProject
             this.tableLayoutPanel9.Controls.Add(this.panel27, 0, 1);
             this.tableLayoutPanel9.Controls.Add(this.pictureBox3, 0, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(525, 249);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(550, 249);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.23529F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.76471F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(516, 316);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(541, 316);
             this.tableLayoutPanel9.TabIndex = 7;
             // 
             // panel27
@@ -940,7 +954,7 @@ namespace GymProject
             this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel27.Location = new System.Drawing.Point(3, 171);
             this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(510, 142);
+            this.panel27.Size = new System.Drawing.Size(535, 142);
             this.panel27.TabIndex = 2;
             // 
             // fightRITB
@@ -952,7 +966,7 @@ namespace GymProject
             this.fightRITB.Location = new System.Drawing.Point(0, 0);
             this.fightRITB.Name = "fightRITB";
             this.fightRITB.ReadOnly = true;
-            this.fightRITB.Size = new System.Drawing.Size(510, 142);
+            this.fightRITB.Size = new System.Drawing.Size(535, 142);
             this.fightRITB.TabIndex = 1;
             this.fightRITB.Text = "";
             // 
@@ -962,7 +976,7 @@ namespace GymProject
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(3, 3);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(510, 162);
+            this.pictureBox3.Size = new System.Drawing.Size(535, 162);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
@@ -979,7 +993,7 @@ namespace GymProject
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.52941F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.47059F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(516, 316);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(541, 316);
             this.tableLayoutPanel8.TabIndex = 6;
             // 
             // panel26
@@ -988,7 +1002,7 @@ namespace GymProject
             this.panel26.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel26.Location = new System.Drawing.Point(3, 172);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(510, 141);
+            this.panel26.Size = new System.Drawing.Size(535, 141);
             this.panel26.TabIndex = 2;
             // 
             // AeroRITB
@@ -1000,7 +1014,7 @@ namespace GymProject
             this.AeroRITB.Location = new System.Drawing.Point(0, 0);
             this.AeroRITB.Name = "AeroRITB";
             this.AeroRITB.ReadOnly = true;
-            this.AeroRITB.Size = new System.Drawing.Size(510, 141);
+            this.AeroRITB.Size = new System.Drawing.Size(535, 141);
             this.AeroRITB.TabIndex = 1;
             this.AeroRITB.Text = "";
             // 
@@ -1010,7 +1024,7 @@ namespace GymProject
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.Location = new System.Drawing.Point(3, 3);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(510, 163);
+            this.pictureBox5.Size = new System.Drawing.Size(535, 163);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
@@ -1027,7 +1041,7 @@ namespace GymProject
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.59406F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.40594F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(516, 240);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(541, 240);
             this.tableLayoutPanel7.TabIndex = 5;
             // 
             // panel24
@@ -1036,7 +1050,7 @@ namespace GymProject
             this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel24.Location = new System.Drawing.Point(3, 170);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(510, 67);
+            this.panel24.Size = new System.Drawing.Size(535, 67);
             this.panel24.TabIndex = 2;
             // 
             // basikRITB
@@ -1048,7 +1062,7 @@ namespace GymProject
             this.basikRITB.Location = new System.Drawing.Point(0, 0);
             this.basikRITB.Name = "basikRITB";
             this.basikRITB.ReadOnly = true;
-            this.basikRITB.Size = new System.Drawing.Size(510, 67);
+            this.basikRITB.Size = new System.Drawing.Size(535, 67);
             this.basikRITB.TabIndex = 0;
             this.basikRITB.Text = "";
             // 
@@ -1059,7 +1073,7 @@ namespace GymProject
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(510, 161);
+            this.pictureBox1.Size = new System.Drawing.Size(535, 161);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -1071,12 +1085,12 @@ namespace GymProject
             this.tableLayoutPanel6.Controls.Add(this.panel25, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.pictureBox2, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(525, 3);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(550, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.59406F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.40594F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(516, 240);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(541, 240);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
             // panel25
@@ -1085,7 +1099,7 @@ namespace GymProject
             this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel25.Location = new System.Drawing.Point(3, 170);
             this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(510, 67);
+            this.panel25.Size = new System.Drawing.Size(535, 67);
             this.panel25.TabIndex = 2;
             // 
             // gymRITB
@@ -1097,7 +1111,7 @@ namespace GymProject
             this.gymRITB.Location = new System.Drawing.Point(0, 0);
             this.gymRITB.Name = "gymRITB";
             this.gymRITB.ReadOnly = true;
-            this.gymRITB.Size = new System.Drawing.Size(510, 67);
+            this.gymRITB.Size = new System.Drawing.Size(535, 67);
             this.gymRITB.TabIndex = 1;
             this.gymRITB.Text = "";
             // 
@@ -1107,7 +1121,7 @@ namespace GymProject
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(3, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(510, 161);
+            this.pictureBox2.Size = new System.Drawing.Size(535, 161);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -1128,7 +1142,7 @@ namespace GymProject
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1050, 574);
+            this.tabPage5.Size = new System.Drawing.Size(1100, 574);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Раздевалка";
             // 
@@ -1246,7 +1260,7 @@ namespace GymProject
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1050, 574);
+            this.tabPage6.Size = new System.Drawing.Size(1100, 574);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Новый клиент";
             // 
@@ -1403,53 +1417,136 @@ namespace GymProject
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage1.Controls.Add(this.pictureBox4);
+            this.tabPage1.Controls.Add(this.button9);
+            this.tabPage1.Controls.Add(this.button8);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1050, 574);
+            this.tabPage1.Size = new System.Drawing.Size(1100, 574);
             this.tabPage1.TabIndex = 6;
             this.tabPage1.Text = "Клиентская база";
             // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button9.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button9.Location = new System.Drawing.Point(774, 478);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(263, 32);
+            this.button9.TabIndex = 9;
+            this.button9.Text = "Закрыть и сохранить\r\n";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button8.Location = new System.Drawing.Point(774, 440);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(263, 32);
+            this.button8.TabIndex = 8;
+            this.button8.Text = "Выгрузить\r\n";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dataGridView1.AllowDrop = true;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.GridColor = System.Drawing.Color.Black;
             this.dataGridView1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dataGridView1.Location = new System.Drawing.Point(58, 34);
+            this.dataGridView1.Location = new System.Drawing.Point(79, 34);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Silver;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(922, 93);
+            this.dataGridView1.Size = new System.Drawing.Size(900, 93);
             this.dataGridView1.TabIndex = 0;
             // 
-            // Column1
+            // pictureBox4
             // 
-            this.Column1.HeaderText = "✔";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
+            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(1094, 568);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 10;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.DarkGray;
+            this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(1094, 568);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(84, 454);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(133, 115);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 10;
+            this.pictureBox7.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1282, 603);
+            this.ClientSize = new System.Drawing.Size(1332, 603);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "GymSparta";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1461,6 +1558,7 @@ namespace GymProject
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -1520,6 +1618,9 @@ namespace GymProject
             this.tabPage6.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1632,7 +1733,11 @@ namespace GymProject
         private System.Windows.Forms.RadioButton MaleRB;
         private System.Windows.Forms.ComboBox TarifCB;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }
 
